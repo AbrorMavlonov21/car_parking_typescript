@@ -1,17 +1,17 @@
-import { repository, Repository } from "../../lib/repository";
 import { ResData } from "../../lib/resData";
-import { IPark, IParkService } from "./interfaces/park.service";
+import { IPark } from "./interfaces/park.interface";
+import { IParkRepository } from "./interfaces/park.repository";
+import { IParkService } from "./interfaces/park.service";
+import { parkRepository } from "./park.repository";
 
 class ParkService implements IParkService {
-  constructor(private repository: Repository) {}
+  constructor(private repository: IParkRepository) {}
 
   async getAll(): Promise<ResData<Array<IPark>>> {
-    const data = await this.repository.multiple<IPark, undefined>(
-      "select * from parks"
-    );
+    const data = await this.repository.getAll();
 
     return new ResData<Array<IPark>>(200, "success", data);
   }
 }
 
-export const parkService = new ParkService(repository);
+export const parkService = new ParkService(parkRepository);
