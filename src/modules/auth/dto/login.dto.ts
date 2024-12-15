@@ -8,4 +8,4 @@ export interface ILoginDto {
 export const loginDto = Joi.object<ILoginDto, true>({
   phone: Joi.string().required(),
   password: Joi.string().required(),
-});
+}); 

@@ -47,6 +47,6 @@ app.use(
   }
 );
 
-app.listen(7777, (): void => {
-  console.log("http://localhost:7777");
+app.listen(3000, (): void => {
+  console.log("http://localhost:3000");
 });

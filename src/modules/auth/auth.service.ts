@@ -35,5 +35,5 @@ class AuthService implements IAuthService {
     return resData;
   }
 }
-
+ 
 export const authService = new AuthService(userService);

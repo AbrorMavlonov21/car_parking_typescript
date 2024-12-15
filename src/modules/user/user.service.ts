@@ -7,6 +7,35 @@ import { userRepository } from "./user.repository";
 
 class UserService implements IUserService {
   constructor(private repository: IUserRepository) {}
+  async delete(id: number): Promise<ResData<IUser>> {
+    const data = await this.repository.delete(id);
+
+    const resData = new ResData(200, "Deleted Successfully", data);
+    
+    return resData;
+  }
+  async update(id: number, dto: IUser): Promise<ResData<IUser>> {
+    const data = await this.repository.update(id, dto);
+
+    const resData = new ResData<IUser>(200, "Updated Successfully", data);
+
+    return resData;
+  }
+   async getAll(): Promise<ResData<Array<IUser>>> {
+    const data = await this.repository.getAll();
+
+    const resData = new ResData<Array<IUser>>(200, "Success", data);
+
+    return resData;
+  } 
+  async create(dto: IUser): Promise<ResData<IUser>> {
+    const data = await this.repository.create(dto);
+
+    const resData = new ResData<IUser>(200, "Created Successfully", data);
+
+    return resData;
+
+  }
 
   async getByPhone(phone: string): Promise<ResData<IUser | undefined>> {
     const data: IUser | undefined = await this.repository.getOneByPhone(phone);
