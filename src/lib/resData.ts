@@ -9,7 +9,7 @@ export class ResData<TData> {
   constructor(
     statusCode: number,
     message: string,
-    public data: TData,
+    public data: TData | null = null,
     meta: Record<string, string | number | object> = {}
   ) {
     this.meta = {

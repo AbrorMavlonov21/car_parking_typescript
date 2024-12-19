@@ -7,7 +7,7 @@ create table users(
     fullname varchar(256) default null
 );
 create table cars(
-    id serial primary key,
+    id serial primary key, 
     model varchar(64) not null,
     nomer varchar(36) unique not null,
     owner int not null,
