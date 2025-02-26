@@ -5,7 +5,7 @@ import { IUserRepository } from "./interfaces/user.repository";
 import { IUserService } from "./interfaces/user.service";
 import { userRepository } from "./user.repository";
 
-class UserService implements IUserService {
+export class UserService implements IUserService {
   constructor(private repository: IUserRepository) {}
   async delete(id: number): Promise<ResData<IUser>> {
     const data = await this.repository.delete(id);
@@ -31,7 +31,7 @@ class UserService implements IUserService {
   async create(dto: IUser): Promise<ResData<IUser>> {
     const data = await this.repository.create(dto);
 
-    const resData = new ResData<IUser>(200, "Created Successfully", data);
+    const resData = new ResData<IUser>(201, "Created Successfully", data);
 
     return resData;
 

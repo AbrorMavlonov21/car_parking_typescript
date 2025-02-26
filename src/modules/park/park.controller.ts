@@ -27,6 +27,7 @@ class ParkController {
       if (meta.statusCode === 200) {
         throw new CustomError(400, "Park with such name already exist")
       }
+      
 
 
       const foundUser = await this.userService.getById(dto.owner);

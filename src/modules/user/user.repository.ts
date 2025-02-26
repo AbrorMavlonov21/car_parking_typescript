@@ -5,11 +5,11 @@ import { IUserRepository } from "./interfaces/user.repository";
 type CreateArgs = number | string | null;
 
 
-class UserRepository implements IUserRepository {
+export class UserRepository implements IUserRepository {
   constructor(private repository: Repository) {}
   async getAll(): Promise<Array<IUser>> {
     return await this.repository.multiple < IUser, undefined >(
-      "select * from users"
+      "SELECT * FROM users"
     );
   }
    async create(dto: IUser): Promise<IUser> {
